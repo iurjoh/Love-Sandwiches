@@ -70,7 +70,7 @@ def update_worksheet(data, worksheet):
     print(f"{worksheet} worksheet updated successfully\n")
 
 
-# These codes were replaced during the refactoring work above
+# These codes were replaced during the refactoring process above
 
 # def update_sales_worksheet(data):
 #     """
@@ -91,7 +91,6 @@ def update_worksheet(data, worksheet):
 #     surplus_worksheet.append_row(data)
 #     print("Surplus worksheet updated successfully.\n")
 
-
 def calculate_surplus_data(sales_row):
     """
     Compare sales with stock and calculate the surplus for each item type.
@@ -109,6 +108,22 @@ def calculate_surplus_data(sales_row):
         surplus_data.append(surplus)
 
     return surplus_data
+
+
+def get_last_5_entries_sales():
+    """
+    Collects columns of data from sales worksheet, collecting
+    the last 5 entries for each sandwich and returns the data
+    as a list of lists.
+    """
+    sales = SHEET.worksheet("sales")
+
+    columns = []
+    for ind in range(1, 7):
+        column = sales.col_values(ind)
+        columns.append(column[-5:])
+
+    return columns
 
 
 def main():
