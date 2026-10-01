@@ -1,3 +1,37 @@
+# Love Sandwiches automation
+
+[Português (Brasil)](README.pt-BR.md)
+
+## Idea and process
+
+A Python course exercise for six sandwich sales values, surplus and suggested next stock using Google Sheets. Source reviewed on 2026-10-01. The implemented function sequence records the workflow; no dated personal plan or design diary was found in the reviewed files.
+
+## Architecture and design
+
+`run.py` authorizes a service account from local creds.json and opens a sheet named love_sandwiches. It collects six comma-separated integers, appends sales, calculates surplus from the latest stock row, appends surplus, averages the last five sales entries per column and adds 10% before rounding and appending stock. The interface is terminal text. The accompanying Node package is the Code Institute browser-terminal wrapper.
+
+## Setup precautions
+
+Do not run or import run.py just to inspect it: authorization happens at module load and main() runs immediately. It writes to sales, surplus and stock worksheets. This README update did not retrieve credentials, connect to Sheets, read business records or execute the program.
+
+Use only a separately authorized disposable sheet and synthetic values if testing later. requirements.txt pins gspread 5.6.0 and historical Google auth packages. The script requests spreadsheets, drive.file and broad Drive scopes; review the minimum required access before any credential setup. Keep persistent service-account secrets outside source control and screenshots. No current hosted deployment was verified.
+
+## Testing and limitations
+
+No automated suite was found in the reviewed root listing. The validator requires exactly six integers but accepts negatives. Stock calculations assume existing numeric rows, consistent columns and non-empty sales history. Test invalid input, missing sheets, empty/short history, header rows, rounding and API failures using mocks or a disposable sheet. Writes are separate append operations; retrying after partial failure can duplicate rows. Refactor import-time effects before isolated unit tests. No test result is claimed.
+
+## Snapshots
+
+No screenshot was verified or added. Future terminal captures under `docs/assets/` must use synthetic numbers and hide credentials, sheet identifiers and business data. Record actual commands/results rather than inventing successful updates.
+
+## Credits and licensing
+
+Course/template and dependency rights remain unchanged. The existing package manifest declares ISC; no new license is added or applied to third-party material.
+
+---
+
+## Original README
+
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
 Welcome Iuri Johansson,
